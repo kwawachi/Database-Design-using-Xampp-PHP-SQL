@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Climate Data</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Add Climate Data</h2>
+    <form action="add_climate_data.php" method="post">
+      <div class="mb-3">
+        <label for="farm_id" class="form-label">Farm ID</label>
+        <input type="number" class="form-control" id="farm_id" name="farm_id" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="rainfall_mm" class="form-label">Rainfall (mm)</label>
+        <input type="number" step="0.1" class="form-control" id="rainfall_mm" name="rainfall_mm">
+      </div>
+
+      <div class="mb-3">
+        <label for="temperature_c" class="form-label">Temperature (°C)</label>
+        <input type="number" step="0.1" class="form-control" id="temperature_c" name="temperature_c">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit Climate Data</button>
+      <a href="index.html" class="btn btn-secondary ms-2">Back to Dashboard</a>
+    </form>
+  </div>
+</body>
+</html>

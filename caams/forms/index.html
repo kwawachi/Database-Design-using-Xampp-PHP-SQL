@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate-Aware Agriculture Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #f7f9fc;
+    }
+    .nav-link.active {
+      font-weight: bold;
+      color: #0d6efd !important;
+    }
+    .card {
+      border-radius: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CAAMS</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2 class="mb-4">Welcome to Climate-Aware Agriculture Management Systems</h2>
+
+    <div class="mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Rainfall Trend (Monthly)</h5>
+          <canvas id="rainfallChart" height="90"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Register Farmer</h5>
+            <p class="card-text">Add new farmer information to the system.</p>
+            <a href="add_farmer_form.html" class="btn btn-outline-primary">Add Farmer</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Add Farm</h5>
+            <p class="card-text">Link farms to registered farmers.</p>
+            <a href="add_farm_form.html" class="btn btn-outline-primary">Add Farm</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Add Crop</h5>
+            <p class="card-text">Log crop types and drought resistance data.</p>
+            <a href="add_crop_form.html" class="btn btn-outline-primary">Add Crop</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Climate Data</h5>
+            <p class="card-text">Track rainfall and temperature readings.</p>
+            <a href="add_climate_data_form.html" class="btn btn-outline-primary">Add Data</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Irrigation Log</h5>
+            <p class="card-text">Record irrigation activities and water usage.</p>
+            <a href="add_irrigation_form.html" class="btn btn-outline-primary">Add Log</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Send Alert</h5>
+            <p class="card-text">Send early warnings to farmers.</p>
+            <a href="add_alert_form.html" class="btn btn-outline-primary">Send Alert</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center mt-5 py-3 text-muted">
+    &copy; 2025 CAAMS Malawi | Powered by LUANAR
+  </footer>
+
+  <script>
+    // Example data 
+    const rainfallLabels = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    const rainfallData = [120, 140, 180, 220, 210, 160, 100, 90, 80, 60, 50, 110];
+
+    const ctx = document.getElementById('rainfallChart').getContext('2d');
+    const rainfallChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: rainfallLabels,
+        datasets: [{
+          label: 'Rainfall (mm)',
+          data: rainfallData,
+          fill: true,
+          backgroundColor: 'rgba(13,110,253,0.1)',
+          borderColor: '#0d6efd',
+          tension: 0.4,
+          pointBackgroundColor: '#0d6efd',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: '#0d6efd',
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Rainfall (mm)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Month'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
